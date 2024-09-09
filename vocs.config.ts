@@ -16,7 +16,7 @@ export default defineConfig({
       link: "/tech-stack",
     },
     {
-      text: "Cli",
+      text: "Using with CLI",
       link: "/cli",
     },
     {
