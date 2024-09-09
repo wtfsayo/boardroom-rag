@@ -15,5 +15,13 @@ export default defineConfig({
       text: "Tech Stack",
       link: "/tech-stack",
     },
+    {
+      text: "Cli",
+      link: "/cli",
+    },
+    {
+      text: "Deployment",
+      link: "/deployment",
+    },
   ],
 });
