@@ -1,3 +1,32 @@
 # Get started
 
-Hello world!
+## Running Locally
+1. Start GaiaNet Node
+  ```
+  gaianet start
+  ```
+2. Install python 3.10 and poetry
+
+- [Python 3.10](https://www.python.org/downloads/) | [Poetry Docs](https://python-poetry.org/docs/)
+
+3. Install dependencies
+  ```
+  poetry install
+  ```
+4. Run the pipeline
+```
+poetry run rag-api-pipeline [OPTIONS] COMMAND [ARGS]...
+```
+See detailed cli usage instructions on the [CLI Docs](./cli.mdx) page.
+
+## Running with Docker
+### 1. Clone the repository:
+
+   ```
+   git clone https://github.com/raid-guild/gaianet-rag-api-pipeline
+   cd gaianet-rag-api-pipeline
+   ```
+### 2. Run with Docker:
+  ```
+  docker-compose up
+  ```
