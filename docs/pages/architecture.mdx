@@ -8,7 +8,8 @@ This document provides an overview of the RAG (Retrieval-Augmented Generation) A
 ## Diagram
 ![image](https://res.cloudinary.com/dwx9alovg/image/upload/v1725856208/rag-pipeline/toms0dzpmfbrmuw87xmd.png)
 
-```mermaid
+```mermaid erDiagram
+
 graph TB
     subgraph Airbyte["Airbyte + Pathway"]
         PM[Pipeline Manifest] -->|1.1 read| AL[APILoader]
