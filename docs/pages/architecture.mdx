@@ -6,42 +6,12 @@ This document provides an overview of the RAG (Retrieval-Augmented Generation) A
 
 
 ## Diagram
-![image](https://res.cloudinary.com/dwx9alovg/image/upload/v1725856208/rag-pipeline/toms0dzpmfbrmuw87xmd.png)
 
-```mermaid erDiagram
+<iframe src="https://mermaid.live/view#pako:eNptVNtu4jAQ_RXLr0sDTsotWq0EKqVVoUWbfVrDg4mHJGoSR47Tli38-46TBth2I1mKz5yZMz6-vNNQSaA-jbQoYvJrus4JfmW1bYBJord7A3xNP_7IN7ISJn4V-zXdNGT7rZZ8lRSQJjmQpciTHZRmQ66ufhyYw4gGIQ9ksuCT1f1CCQn6IvUp4E8F5BgiQQFhm-Wess7UyaIOug6JIActDBxIsOSBqnQIJGt1zwnBsk7wHFIaoc2B_JzMOQ7SNnvBtXBD7iNbaaz9MOUPuXpNQUZApqK8pD9Ma3bf8Vo2FmjCkMtPNmIoAP0CGo20OvVia-AfFxeLJcdBMtyT9AKfLfks24KUSR59CT5N7hsD723ZzacWpnM-VUJLrVRG5goVc5GjWZZqF9DucMNuPeg712QHwlQaCLTKh_MyGvaHBQOHBLkoyliZL5TTlHy3Ythrg88f-Vwk4hEMWWllVKhSgpNXpZ83_82cPzbw3S2_q6LIGnErQsA1ONiCPVRftE_uLyA6-VHbzDiKhlCWl967_EYYQQK7mZe4x2dvxtqW1luWhHD2mHZoBjoTicQr9G7hNTUxZLCmPv5KoZ_XdJ0fkScqo4J9HlLf6Ao6VKsqiqm_E2mJs6qQeJpvEoEdZy2lAWcywZZOzLS-P9R_p2Zf1Dc3KQ3WD1W-SyKLVzpFODamKP1u14adKDFxtXVClXXLRMZ4FeKX8aA7cAcj4XowGHqi73ky3LLxaOdes50c9pgr6PHYoVDrL5tnon4tOrQQ-W88UG2jOLXCb9Qf9noODub1xsx12aDfoXvqMzZ0XLc3HI08d8x6Xh_L_qnzkT0aM2_keWM28K7HHjv-BWl9ZGw"
+width="100%" height="700" align="center">
+</iframe>
 
-graph TB
-    subgraph Airbyte["Airbyte + Pathway"]
-        PM[Pipeline Manifest] -->|1.1 read| AL[APILoader]
-        OS[OpenAPI Spec] -->|1.2 read| AL
-        AL -->|2. generate| SM[Source manifest]
-        SM -->|3. start| RAG[RAG Pipeline]
-        RAG -->|3.5 store| KB[Knowledge Base]
-        KB -->|5.3 store| RAG
-    end
-
-    subgraph RAGServer["RAG API Server"]
-        LLM[LLM model]
-        EM[Embedding model]
-        OAI[OpenAI API]
-    end
-
-    BG[Boardroom Governance API] -->|4. extract| Airbyte
-    RAG -->|5.4 feature embedding| RAGServer
-    KB -->|6. Snapshot| RAGServer
-    RAGServer <--> OAI
-
-    GN[GaiaNet Protocol Network]
-    RAGServer <--> GN
-
-    HF[Hugging Face] -.->|Load| RAGServer
-
-    subgraph Legend
-        L1[Process]
-        L2[Data Store]
-        L3[External Service]
-    end
-```
+[Full Image](https://res.cloudinary.com/dwx9alovg/image/upload/v1725856208/rag-pipeline/toms0dzpmfbrmuw87xmd.png)
 
 ## Components
 
