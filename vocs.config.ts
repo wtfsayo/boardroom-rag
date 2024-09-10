@@ -20,6 +20,10 @@ export default defineConfig({
       link: "/cli",
     },
     {
+      text: "Working with Other APIs",
+      link: "/other-apis",
+    },
+    {
       text: "Deployment",
       link: "/deployment",
     },
