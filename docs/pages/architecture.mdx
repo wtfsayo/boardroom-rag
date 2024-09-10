@@ -8,6 +8,40 @@ This document provides an overview of the RAG (Retrieval-Augmented Generation) A
 ## Diagram
 ![image](https://res.cloudinary.com/dwx9alovg/image/upload/v1725856208/rag-pipeline/toms0dzpmfbrmuw87xmd.png)
 
+```mermaid
+graph TB
+    subgraph Airbyte["Airbyte + Pathway"]
+        PM[Pipeline Manifest] -->|1.1 read| AL[APILoader]
+        OS[OpenAPI Spec] -->|1.2 read| AL
+        AL -->|2. generate| SM[Source manifest]
+        SM -->|3. start| RAG[RAG Pipeline]
+        RAG -->|3.5 store| KB[Knowledge Base]
+        KB -->|5.3 store| RAG
+    end
+
+    subgraph RAGServer["RAG API Server"]
+        LLM[LLM model]
+        EM[Embedding model]
+        OAI[OpenAI API]
+    end
+
+    BG[Boardroom Governance API] -->|4. extract| Airbyte
+    RAG -->|5.4 feature embedding| RAGServer
+    KB -->|6. Snapshot| RAGServer
+    RAGServer <--> OAI
+
+    GN[GaiaNet Protocol Network]
+    RAGServer <--> GN
+
+    HF[Hugging Face] -.->|Load| RAGServer
+
+    subgraph Legend
+        L1[Process]
+        L2[Data Store]
+        L3[External Service]
+    end
+```
+
 ## Components
 
 ### 1. Pipeline Manifest
